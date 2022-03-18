@@ -1,6 +1,5 @@
 package org.sqli.authentification.entitie;
 
-import org.hibernate.annotations.Columns;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

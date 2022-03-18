@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.sqli.authentification.dao.UserRepository;
 import org.sqli.authentification.dto.request.UserDto;
+import org.sqli.authentification.dto.response.UserResDto;
 import org.sqli.authentification.entitie.User;
 import org.sqli.authentification.service.UserService;
 
@@ -22,9 +23,10 @@ public class UserController {
 
 
     @PostMapping
-    public ResponseEntity<User> authentication(@RequestBody UserDto user){
-       User userauth=userService.findUserByUsernameAndPassword(user.getLogin(),user.getPassword()).get();
-        return  new ResponseEntity<>(userauth, HttpStatus.ACCEPTED);
+    public ResponseEntity<UserResDto> authentication(@RequestBody UserDto user){
+       User userauth=userService.findUserByUsernameAndPassword(user.getLogin(),user.getPassword());
+       UserResDto userDto=new UserResDto(userauth);
+        return  new ResponseEntity<>(userDto, HttpStatus.ACCEPTED);
     }
 
 
