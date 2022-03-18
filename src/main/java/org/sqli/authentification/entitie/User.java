@@ -44,4 +44,12 @@ public class User extends  BaseClass{
     public void setLoginAttempts(int loginAttempts) {
         this.loginAttempts = loginAttempts;
     }
+
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
+    }
 }
