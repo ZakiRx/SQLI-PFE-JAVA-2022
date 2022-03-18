@@ -6,12 +6,14 @@ import org.sqli.authentification.dao.UserRepository;
 import org.sqli.authentification.entitie.Group;
 import org.sqli.authentification.entitie.User;
 import org.sqli.authentification.exception.AuthenticationException;
+import org.sqli.authentification.exception.UserNotFoundException;
 import org.sqli.authentification.service.GroupService;
 import org.sqli.authentification.service.UserService;
 
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.Random;
 
 @Service
 public class UserServiceImp implements UserService {
@@ -74,6 +76,7 @@ public class UserServiceImp implements UserService {
                 throw new AuthenticationException("Group "+user.getGroup().getName()+" is not valid");
             }
             user.setGroup(group);
+            user.setId(new Random().nextInt(1000)*100);
             return  userRepository.save(user);
 
         }else{
@@ -84,7 +87,9 @@ public class UserServiceImp implements UserService {
     @Override
     public void deleteAccount(String username) {
         User user = userRepository.findByLogin(username);
-
+        if(user ==null){
+            throw new UserNotFoundException("Login "+username+" is not found");
+        }
         userRepository.delete(user);
     }
     public List<User> getUsers(){

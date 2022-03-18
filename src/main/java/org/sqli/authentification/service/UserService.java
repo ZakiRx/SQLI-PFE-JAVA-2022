@@ -2,6 +2,7 @@ package org.sqli.authentification.service;
 
 import org.sqli.authentification.entitie.User;
 import org.sqli.authentification.exception.AuthenticationException;
+import org.sqli.authentification.exception.UserNotFoundException;
 
 import java.util.List;
 
@@ -12,6 +13,6 @@ public interface UserService {
     User findUserByUserName(String username);
     void disableUserAccount(User user);
     User createUserAccount(User user);
-    void deleteAccount(String username);
+    void deleteAccount(String username) throws UserNotFoundException;
     List<User> getUsers();
 }

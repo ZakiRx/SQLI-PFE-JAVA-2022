@@ -10,7 +10,7 @@ import org.sqli.authentification.dto.response.ResponseMessage;
 import org.sqli.authentification.dto.response.UserResDto;
 import org.sqli.authentification.entitie.Group;
 import org.sqli.authentification.entitie.User;
-import org.sqli.authentification.exception.AuthenticationException;
+import org.sqli.authentification.exception.UserNotFoundException;
 import org.sqli.authentification.service.UserService;
 
 @RestController
@@ -37,12 +37,15 @@ public class UserController {
         return  new ResponseEntity<>(userDto, HttpStatus.ACCEPTED);
     }
 
-    @DeleteMapping("/user/{login}")
-    public ResponseMessage deleteAccount(@PathVariable("login") String login){
-
+    @DeleteMapping(value = "/user/{login}",produces = "application/json")
+    public ResponseEntity<String> deleteAccount(@PathVariable("login") String login){
+        try{
             userService.deleteAccount(login);
-            System.out.println("oooooook");
-            return new ResponseMessage("account deleted",HttpStatus.ACCEPTED);
+            return new ResponseEntity<>("{\"error\":\"user deleted\"}",HttpStatus.ACCEPTED);
+
+        }catch (UserNotFoundException exception){
+            return new ResponseEntity<>("{\"error\":\""+exception.getMessage()+"\"}",HttpStatus.ACCEPTED);
+        }
 
     }
 

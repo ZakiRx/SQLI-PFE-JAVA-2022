@@ -1,5 +1,5 @@
 CREATE TABLE user (
-  id                INTEGER PRIMARY KEY,
+  id                INTEGER PRIMARY KEY ,
   login             VARCHAR(64) NOT NULL,
   password          VARCHAR(64) NOT NULL,
   enabled           INTEGER DEFAULT 1 NOT NULL,
@@ -8,7 +8,7 @@ CREATE TABLE user (
   );
 
 CREATE TABLE user_group (
-  id                INTEGER PRIMARY KEY,
+  id                INTEGER PRIMARY KEY ,
   name              VARCHAR(64) NOT NULL
   );
 
