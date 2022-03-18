@@ -2,6 +2,7 @@ package org.sqli.authentification.service;
 
 import org.sqli.authentification.entitie.User;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface UserService {
@@ -11,4 +12,5 @@ public interface UserService {
     void disableUserAccount();
     Optional<User> createUserAccount(User user);
     void deleteAccount(String username);
+    List<User> getUsers();
 }

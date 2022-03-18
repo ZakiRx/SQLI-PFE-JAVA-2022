@@ -1,5 +1,8 @@
 package org.sqli.authentification.entitie;
 
+import org.hibernate.annotations.Columns;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
@@ -8,6 +11,7 @@ public class User extends  BaseClass{
     private String login;
     private String password;
     private boolean enabled;
+    @Column(name = "LOGIN_ATTEMPTS")
     private int loginAttempts;
     @ManyToOne
     private Group group;
@@ -36,7 +40,6 @@ public class User extends  BaseClass{
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
-
     public int getLoginAttempts() {
         return loginAttempts;
     }

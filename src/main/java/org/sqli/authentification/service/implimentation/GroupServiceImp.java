@@ -2,6 +2,7 @@ package org.sqli.authentification.service.implimentation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.sqli.authentification.dao.GroupRepository;
 import org.sqli.authentification.entitie.Group;
 import org.sqli.authentification.service.GroupService;
 
@@ -10,10 +11,10 @@ import java.util.Optional;
 @Service
 public class GroupServiceImp implements GroupService {
 
-    private GroupService groupService;
+    private GroupRepository groupRepository;
     @Autowired
-    public  GroupServiceImp(GroupService groupService){
-        this.groupService=groupService;
+    public  GroupServiceImp(GroupRepository groupRepository){
+        this.groupRepository=groupRepository;
     }
     @Override
     public Optional<Group> getGroupByName(String name) {

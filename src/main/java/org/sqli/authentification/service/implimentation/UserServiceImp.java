@@ -6,6 +6,7 @@ import org.sqli.authentification.dao.UserRepository;
 import org.sqli.authentification.entitie.User;
 import org.sqli.authentification.service.UserService;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -17,7 +18,7 @@ public class UserServiceImp implements UserService {
     }
     @Override
     public Optional<User> findUserByUsernameAndPassword(String username, String password) {
-        return Optional.empty();
+        return userRepository.findUserByLoginAndPassword(username,password);
     }
 
     @Override
@@ -38,5 +39,8 @@ public class UserServiceImp implements UserService {
     @Override
     public void deleteAccount(String username) {
 
+    }
+    public List<User> getUsers(){
+        return  userRepository.findAll();
     }
 }
