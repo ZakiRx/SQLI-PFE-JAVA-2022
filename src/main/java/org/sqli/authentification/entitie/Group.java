@@ -1,11 +1,13 @@
 package org.sqli.authentification.entitie;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Group extends  BaseClass{
+@Table(name = "user_group")
+public class Group extends BaseClass{
+
+
     private String name;
     @OneToMany(mappedBy = "group")
     private List<User> users;
@@ -13,6 +15,8 @@ public class Group extends  BaseClass{
     public Group(String name) {
         this.name = name;
     }
+
+
 
     public String getName() {
         return name;

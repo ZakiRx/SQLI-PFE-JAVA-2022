@@ -1,17 +1,20 @@
 package org.sqli.authentification.entitie;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class User extends  BaseClass{
+
+    @Column(name = "LOGIN")
     private String login;
+    @Column(name = "PASSWORD")
     private String password;
+    @Column(name = "ENABLED")
     private boolean enabled;
-    @Column(name = "LOGIN_ATTEMPTS")
+    @Column(name = "LOGINATTEMPTS")
     private int loginAttempts;
+
     @ManyToOne
     private Group group;
 
@@ -22,6 +25,8 @@ public class User extends  BaseClass{
         this.group=group;
         this.enabled=true;
     }
+
+
 
     public String getLogin() {
         return login;
