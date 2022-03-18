@@ -9,6 +9,10 @@ public class Group extends  BaseClass{
     private String name;
     @OneToMany(mappedBy = "group")
     private List<User> users;
+    public Group(){}
+    public Group(String name) {
+        this.name = name;
+    }
 
     public String getName() {
         return name;

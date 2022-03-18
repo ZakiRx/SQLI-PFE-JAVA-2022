@@ -4,13 +4,13 @@ import org.springframework.http.HttpStatus;
 
 import java.time.LocalDateTime;
 
-public class ResponseException {
+public class ResponseMessage {
 
     private String message;
     private LocalDateTime dateTime;
     private  int code;
 
-    public ResponseException(String message, HttpStatus httpStatus) {
+    public ResponseMessage(String message, HttpStatus httpStatus) {
         this.message = message;
         this.dateTime = LocalDateTime.now();
         this.code = httpStatus.value();

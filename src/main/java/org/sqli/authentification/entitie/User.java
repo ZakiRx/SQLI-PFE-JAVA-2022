@@ -15,6 +15,13 @@ public class User extends  BaseClass{
     @ManyToOne
     private Group group;
 
+    public User(){}
+    public User(String login, String password,Group group) {
+        this.login = login;
+        this.password = password;
+        this.group=group;
+        this.enabled=true;
+    }
 
     public String getLogin() {
         return login;

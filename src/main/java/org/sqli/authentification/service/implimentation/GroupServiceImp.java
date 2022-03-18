@@ -17,8 +17,8 @@ public class GroupServiceImp implements GroupService {
         this.groupRepository=groupRepository;
     }
     @Override
-    public Optional<Group> getGroupByName(String name) {
-        return Optional.empty();
+    public Group getGroupByName(String name) {
+        return groupRepository.findGroupByName(name);
     }
 
     @Override
